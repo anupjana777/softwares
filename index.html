@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Softwares by Anup Jana</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- REUSABLE HEADER -->
+    <header>
+        <h1>Softwares by Anup Jana</h1>
+    </header>
+
+    <main>
+        <!-- Welcome & Profile Section -->
+        <section class="content-box profile-section">
+            <p style="font-size: 1.2rem; text-align: center; font-weight: 600; margin-top: 0;">Welcome to the Software section developed by Anup Jana.</p>
+            
+            <h2>Resource Person</h2>
+            <div class="profile-name">Anup Kumar Jana</div>
+            <div class="profile-degrees">M.Tech (NIT Warangal), PhD (IIT Dhanbad)</div>
+            
+            <div class="specializations">
+                <strong>Specialized in:</strong><br>
+                Manufacturing, Additive Manufacturing, Optimization, Machine Learning, Non-Conventional Machining, Mechanical, Viscoelastic, EM Characterization.
+            </div>
+        </section>
+
+        <!-- Software Access Section -->
+        <section class="content-box">
+            <h2>Available Software Solutions</h2>
+            <div class="software-list">
+                
+                <div class="software-card">
+                    <span class="software-title">1. Permittivity Calculator</span>
+                    <a href="#" class="btn">Click here to access</a>
+                </div>
+
+                <div class="software-card">
+                    <span class="software-title">2. VNA Data Analyzer (5-75 GHz)</span>
+                    <a href="#" class="btn">Click here to access</a>
+                </div>
+
+                <div class="software-card">
+                    <span class="software-title">3. Jacobs Working Curve Generator</span>
+                    <a href="#" class="btn">Click here to access</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Feedback Section -->
+        <section class="content-box">
+            <h2>Feedback & Support</h2>
+            <p class="thank-you-msg">Thank you for using my software. Kindly share your feedback below.</p>
+            
+            <!-- Using formsubmit.co to handle the email sending -->
+            <form action="https://formsubmit.co/anupjana88888@gmail.com" method="POST" class="feedback-form" id="feedbackForm">
+                
+                <!-- Hidden inputs for FormSubmit configuration -->
+                <input type="hidden" name="_subject" value="New Software Feedback Submission">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email ID</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="feedback">Feedback</label>
+                    <textarea id="feedback" name="feedback" rows="5" placeholder="Share your thoughts, issues, or suggestions..." required></textarea>
+                </div>
+                
+                <button type="submit" class="btn" style="align-self: flex-start; padding: 0.8rem 2rem;">Submit Feedback</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- REUSABLE FOOTER -->
+    <footer>
+        <p>&copy; <span id="year"></span> Anup Kumar Jana. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Contact: anupjana88888@gmail.com</p>
+    </footer>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

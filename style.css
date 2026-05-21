@@ -209,3 +209,11 @@ footer p {
         padding: 1.5rem;
     }
 }
+/* Logo Styling */
+.site-logo {
+    max-width: 100px; /* Adjust this size as needed */
+    height: auto;
+    border-radius: 50%; /* Optional: Makes a square logo circular */
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}

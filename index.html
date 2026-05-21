@@ -4,21 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Softwares by Anup Jana</title>
-    <!-- Link to the external CSS file -->
+    <link rel="icon" type="image/png" href="logo2.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- REUSABLE HEADER -->
     <header>
-        <!-- Add your logo image here -->
-        <img src="logo.png" alt="Anup Jana Logo" class="site-logo">
-        
+        <img src="logo2.png" alt="Anup Jana Logo" class="site-logo">
         <h1>Softwares by Anup Jana</h1>
     </header>
 
     <main>
-        <!-- Welcome & Profile Section -->
         <section class="content-box profile-section">
             <p style="font-size: 1.2rem; text-align: center; font-weight: 600; margin-top: 0;">Welcome to the Software section developed by Anup Jana.</p>
             
@@ -32,42 +28,110 @@
             </div>
         </section>
 
-        <!-- Software Access Section -->
         <section class="content-box">
             <h2>Available Software Solutions</h2>
-            <div class="software-list">
-                
-                <div class="software-card">
-                    <span class="software-title">1. Permittivity Calculator</span>
-                    <a href="#" class="btn">Click here to access</a>
+            
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="openTab(event, 'tab-opt')">Optimization / MCDM</button>
+                    <button class="tab-btn" onclick="openTab(event, 'tab-em')">Electromagnetic & VNA</button>
+                    <button class="tab-btn" onclick="openTab(event, 'tab-doe')">DOE Tools</button>
+                    <button class="tab-btn" onclick="openTab(event, 'tab-am')">Additive Manufacturing</button>
                 </div>
 
-                <div class="software-card">
-                    <span class="software-title">2. VNA Data Analyzer (5-75 GHz)</span>
-                    <a href="#" class="btn">Click here to access</a>
+                <div id="tab-opt" class="tab-content active">
+                    <div class="software-list">
+                        <div class="software-card">
+                            <span class="software-title">1. Genetic Algorithm (GA)</span>
+                            <a href="#" class="btn">Access</a>
+                        </div>
+                        <div class="software-card">
+                            <span class="software-title">2. NSGA II</span>
+                            <a href="#" class="btn">Access</a>
+                        </div>
+                        <div class="software-card">
+                            <span class="software-title">3. Ant Colony Optimization</span>
+                            <a href="#" class="btn">Access</a>
+                        </div>
+                        <div class="software-card">
+                            <span class="software-title">4. Particle Swarm Optimization</span>
+                            <a href="#" class="btn">Access</a>
+                        </div>
+                        <div class="software-card">
+                            <span class="software-title">5. MCDM Suite (GRA, VIKOR, TOPSIS, MOORA)</span>
+                            <a href="#" class="btn">Access</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="software-card">
-                    <span class="software-title">3. Jacobs Working Curve Generator</span>
-                    <a href="#" class="btn">Click here to access</a>
+                <div id="tab-em" class="tab-content">
+                    <div class="software-list">
+                        <div class="software-card">
+                            <span class="software-title">1. Permittivity & Permeability Calculator</span>
+                            <a href="#" class="btn">Access</a>
+                        </div>
+                        <div class="software-card">
+                            <span class="software-title">2. VNA Data Analyzer (5-75 GHz)</span>
+                            <a href="#" class="btn">Access</a>
+                        </div>
+                        <div class="software-card">
+                            <span class="software-title">3. Reflection & Absorption Coefficient Estimator</span>
+                            <a href="#" class="btn">Access</a>
+                        </div>
+                        <div class="software-card">
+                            <span class="software-title">4. Dielectric Loss Tangent (Tan Delta) Plotter</span>
+                            <a href="#" class="btn">Access</a>
+                        </div>
+                    </div>
                 </div>
 
+                <div id="tab-doe" class="tab-content">
+                    <div class="software-list">
+                        <div class="software-card">
+                            <span class="software-title">1. Taguchi's Orthogonal Array (OA)</span>
+                            <a href="#" class="btn">Access</a>
+                        </div>
+                        <div class="software-card">
+                            <span class="software-title">2. Response Surface Methodology (RSM)</span>
+                            <a href="#" class="btn">Access</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-am" class="tab-content">
+                    <div class="software-list">
+                        <div class="software-card">
+                            <span class="software-title">1. Jacobs Working Curve Generator</span>
+                            <a href="#" class="btn">Access</a>
+                        </div>
+                        <div class="software-card">
+                            <span class="software-title">2. VPP Exposure Parameter Optimizer</span>
+                            <a href="#" class="btn">Access</a>
+                        </div>
+                        <div class="software-card">
+                            <span class="software-title">3. Multi-Material Composite Interleaf Designer</span>
+                            <a href="#" class="btn">Access</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Feedback Section -->
+        <section class="content-box" style="text-align: center; border-top: 4px solid #d4af37;">
+            <h2>Support the Developer</h2>
+            <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">Support me to make more software solutions for you by helping me financially.</p>
+            <a href="support.html" class="btn" style="background-color: #d4af37; color: #000; padding: 0.8rem 2rem;">Support via UPI</a>
+        </section>
+
         <section class="content-box">
             <h2>Feedback & Support</h2>
             <p class="thank-you-msg">Thank you for using my software. Kindly share your feedback below.</p>
             
-            <!-- Using formsubmit.co to handle the email sending -->
             <form action="https://formsubmit.co/anupjana88888@gmail.com" method="POST" class="feedback-form" id="feedbackForm">
                 
-                <!-- Hidden inputs for FormSubmit configuration -->
                 <input type="hidden" name="_subject" value="New Software Feedback Submission">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://anupjana777.github.io/softwares/thank_you.html">
-                
+                <input type="hidden" name="_next" value="https://anupjana777.github.io/softwares/thankyou.html">
                 
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -89,13 +153,11 @@
         </section>
     </main>
 
-    <!-- REUSABLE FOOTER -->
     <footer>
         <p>&copy; <span id="year"></span> Anup Kumar Jana. All rights reserved.</p>
         <p style="margin-top: 0.5rem; font-size: 0.8rem;">Contact: anupjana88888@gmail.com</p>
     </footer>
 
-    <!-- Link to the external JavaScript file -->
-    <script src="script.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

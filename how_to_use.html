@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use - Softwares by Anup Jana</title>
+    <link rel="icon" type="image/png" href="logo2.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific styling for the manual interface */
+        .manual-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .selector-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        select {
+            padding: 0.8rem;
+            border: 2px solid var(--secondary-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: var(--font-main);
+            background-color: #fff;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        .manual-display {
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            min-height: 200px;
+            display: none; /* Hidden until a software is selected */
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .manual-display.active {
+            display: block;
+        }
+        .step-list {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+        .step-list li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-title">
+                <img src="logo2.png" alt="Anup Jana Logo" class="site-logo">
+                <h1>Softwares by Anup Jana</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Softwares</a></li>
+                    <li><a href="how_to_use.html" class="active">How to use</a></li>
+                    <li><a href="community.html">Community</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="content-box">
+            <h2>Software User Manuals</h2>
+            <p style="margin-bottom: 2rem; color: #555;">Select a category and a specific software tool below to view its step-by-step operating procedure.</p>
+            
+            <div class="manual-container">
+                <div class="selector-group">
+                    <label for="categorySelect" style="font-weight: 600; color: var(--primary-color);">1. Select Software Category</label>
+                    <select id="categorySelect" onchange="populateSoftwareList()">
+                        <option value="" disabled selected>-- Choose a Category --</option>
+                        <option value="opt">Optimization / MCDM</option>
+                        <option value="em">Electromagnetic & VNA</option>
+                        <option value="doe">DOE Tools</option>
+                        <option value="am">Additive Manufacturing</option>
+                    </select>
+                </div>
+
+                <div class="selector-group">
+                    <label for="softwareSelect" style="font-weight: 600; color: var(--primary-color);">2. Select Specific Software</label>
+                    <select id="softwareSelect" onchange="displayManual()" disabled>
+                        <option value="" disabled selected>-- Waiting for Category Selection --</option>
+                    </select>
+                </div>
+
+                <div id="manualDisplay" class="manual-display">
+                    <h3 id="manualTitle" style="margin-top: 0; color: var(--primary-color);"></h3>
+                    <div id="manualContent"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Anup Kumar Jana. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Contact: anupjana88888@gmail.com</p>
+    </footer>
+
+    <script>
+        // Set year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Database of software and manuals
+        const softwareData = {
+            "opt": [
+                { id: "ga", name: "Genetic Algorithm (GA)", manual: "<p><em>Detailed manual for this module will be updated soon.</em></p>" },
+                { id: "nsga", name: "NSGA II", manual: "<p><em>Detailed manual for this module will be updated soon.</em></p>" },
+                { id: "aco", name: "Ant Colony Optimization", manual: "<p><em>Detailed manual for this module will be updated soon.</em></p>" },
+                { id: "pso", name: "Particle Swarm Optimization", manual: "<p><em>Detailed manual for this module will be updated soon.</em></p>" },
+                { id: "mcdm", name: "MCDM Suite (GRA, VIKOR, etc.)", manual: "<p><em>Detailed manual for this module will be updated soon.</em></p>" }
+            ],
+            "em": [
+                { id: "perm", name: "Permittivity & Permeability Calculator", manual: "<p><em>Detailed manual for this module will be updated soon.</em></p>" },
+                { id: "vna", name: "VNA Data Analyzer (5-75 GHz)", manual: `
+                    <p>This tool processes raw scattering parameters (S11, S21) extracted from a Vector Network Analyzer to compute complex permittivity and loss tangents.</p>
+                    <ol class="step-list">
+                        <li><strong>Export Raw Data:</strong> Save your VNA measurements as a standard CSV format (Frequency, ReS11, ImS11, ReS21, ImS21). Ensure frequency is in GHz.</li>
+                        <li><strong>Launch Software:</strong> Open the VNA Data Analyzer executable on your desktop.</li>
+                        <li><strong>Import Data:</strong> Click 'Import Raw CSV' and select your exported file.</li>
+                        <li><strong>Set Parameters:</strong> Input your exact sample thickness (in mm). For waveguide measurements, ensure you input the correct Cutoff Frequency based on your waveguide band.</li>
+                        <li><strong>Select Algorithm:</strong> Choose between Standard NRW or NIST Iterative solver depending on the material (e.g., iterative for clear neat resins, NRW for highly conductive fillers).</li>
+                        <li><strong>Calculate & Export:</strong> Click 'Run Calculation'. The software will automatically isolate the real and imaginary permittivity, calculate Tan Delta, and save the refined data to a new CSV.</li>
+                        <li><strong>Plot Generation:</strong> Navigate to the plotting tab, load multiple calculated CSVs, and generate Q1-journal ready comparative plots.</li>
+                    </ol>
+                ` },
+                { id: "coeff", name: "Reflection & Absorption Coefficient Estimator", manual: "<p><em>Detailed manual for this module will be updated soon.</em></p>" },
+                { id: "tan", name: "Dielectric Loss Tangent Plotter", manual: "<p><em>Detailed manual for this module will be updated soon.</em></p>" }
+            ],
+            "doe": [
+                { id: "oa", name: "Taguchi's Orthogonal Array (OA)", manual: "<p><em>Detailed manual for this module will be updated soon.</em></p>" },
+                { id: "rsm", name: "Response Surface Methodology (RSM)", manual: "<p><em>Detailed manual for this module will be updated soon.</em></p>" }
+            ],
+            "am": [
+                { id: "jacobs", name: "Jacobs Working Curve Generator", manual: `
+                    <p>This module helps optimize exposure parameters (irradiance and time) for Vat Photopolymerization (VPP) systems when using non-native or custom composite resins.</p>
+                    <ol class="step-list">
+                        <li><strong>Prepare Samples:</strong> Print several single-layer specimens using varying exposure times at a constant irradiance level.</li>
+                        <li><strong>Measure Cure Depth:</strong> Carefully wash, post-cure, and measure the thickness (Cure Depth, Cd) of each specimen using a micrometer.</li>
+                        <li><strong>Input Data:</strong> Open the software and input your recorded Cure Depth values alongside their corresponding calculated Exposure Energy (E) doses.</li>
+                        <li><strong>Generate Curve:</strong> The software will plot Cd vs. ln(E) and perform a linear regression.</li>
+                        <li><strong>Analyze Parameters:</strong> Extract the slope to determine the Penetration Depth (Dp) and the x-intercept to find the Critical Energy (Ec) of your specific resin batch.</li>
+                        <li><strong>Optimize Printer Settings:</strong> Use the derived Dp and Ec values to adjust the layer curing settings on your 3D printer (e.g., Form 4) to prevent over-curing and maintain accurate interleaved composite structures.</li>
+                    </ol>
+                ` },
+                { id: "vpp", name: "VPP Exposure Parameter Optimizer", manual: "<p><em>Detailed manual for this module will be updated soon.</em></p>" },
+                { id: "multi", name: "Multi-Material Composite Interleaf Designer", manual: "<p><em>Detailed manual for this module will be updated soon.</em></p>" }
+            ]
+        };
+
+        function populateSoftwareList() {
+            const catSelect = document.getElementById("categorySelect");
+            const softSelect = document.getElementById("softwareSelect");
+            const display = document.getElementById("manualDisplay");
+            
+            // Hide display when changing category
+            display.classList.remove("active");
+            
+            const selectedCat = catSelect.value;
+            
+            // Clear current options
+            softSelect.innerHTML = '<option value="" disabled selected>-- Select a Software --</option>';
+            
+            if (selectedCat && softwareData[selectedCat]) {
+                softSelect.disabled = false;
+                softwareData[selectedCat].forEach(software => {
+                    let option = document.createElement("option");
+                    option.value = software.id;
+                    option.textContent = software.name;
+                    softSelect.appendChild(option);
+                });
+            }
+        }
+
+        function displayManual() {
+            const catSelect = document.getElementById("categorySelect").value;
+            const softSelect = document.getElementById("softwareSelect").value;
+            const display = document.getElementById("manualDisplay");
+            const title = document.getElementById("manualTitle");
+            const content = document.getElementById("manualContent");
+            
+            if (catSelect && softSelect) {
+                const software = softwareData[catSelect].find(s => s.id === softSelect);
+                if (software) {
+                    title.textContent = software.name + " - Operating Manual";
+                    content.innerHTML = software.manual;
+                    display.classList.add("active");
+                }
+            }
+        }
+    </script>
+</body>
+</html>
